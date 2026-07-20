@@ -1,0 +1,27 @@
+package com.school.controller;
+
+import com.school.entity.*; import com.school.repository.*;
+import jakarta.transaction.Transactional;
+import java.math.BigDecimal; import java.util.*;
+import org.springframework.http.*; import org.springframework.security.core.Authentication; import org.springframework.stereotype.Controller; import org.springframework.ui.Model; import org.springframework.web.bind.annotation.*; import org.springframework.web.multipart.MultipartFile;
+
+@Controller
+@RequestMapping("/student")
+public class StudentPortalController {
+ private final StudentRepository students; private final UserRepository users; private final UnitRepository units; private final EnrollmentRepository enrollments; private final PaymentRepository payments; private final AcademicYearRepository years; private final SemesterRepository semesters; private final AnnouncementRepository announcements; private final StudentProfileImageRepository profileImages;
+ public StudentPortalController(StudentRepository students,UserRepository users,UnitRepository units,EnrollmentRepository enrollments,PaymentRepository payments,AcademicYearRepository years,SemesterRepository semesters,AnnouncementRepository announcements,StudentProfileImageRepository profileImages){this.students=students;this.users=users;this.units=units;this.enrollments=enrollments;this.payments=payments;this.years=years;this.semesters=semesters;this.announcements=announcements;this.profileImages=profileImages;}
+ private Student student(Authentication auth){return students.findByUserUsername(auth.getName()).orElseGet(()->{User user=users.findByUsername(auth.getName()).orElseThrow(); Student s=new Student("STU/2026/001",user.getFullName().split(" ")[0],user.getFullName().contains(" ")?user.getFullName().substring(user.getFullName().indexOf(' ')+1):"Student",user.getEmail());s.setUser(user);s.setPhone("Not provided");return students.save(s);});}
+ @Transactional private Semester semester(){ if(years.count()==0) years.save(new AcademicYear("2026/2027",true)); AcademicYear y=years.findAll().get(0); if(semesters.count()==0) semesters.save(new Semester("Semester 1",y)); if(units.count()==0){units.saveAll(List.of(new Unit("CSC 210","Object-Oriented Programming"),new Unit("CSC 214","Database Systems"),new Unit("CSC 220","Web Application Development"),new Unit("MAT 201","Discrete Mathematics")));} return semesters.findAll().get(0); }
+ private String page(Model m, Authentication a, String active){Student s=student(a); m.addAttribute("student",s);m.addAttribute("active",active);m.addAttribute("hasProfileImage",profileImages.existsByStudent(s));m.addAttribute("enrollments",enrollments.findByStudentOrderByCreatedAtDesc(s));m.addAttribute("announcements",announcements.findAll());m.addAttribute("payments",payments.findByStudentOrderByPaymentDateDesc(s));m.addAttribute("balance",new BigDecimal("42000"));return "student/portal";}
+ @GetMapping("/dashboard") public String dashboard(Model m,Authentication a){return page(m,a,"dashboard");}
+ @GetMapping("/profile") public String profile(Model m,Authentication a){return page(m,a,"profile");}
+ @PostMapping("/profile") @Transactional public String updateProfile(Authentication a,@RequestParam String email,@RequestParam String phone,@RequestParam(required=false) MultipartFile profileImage){Student s=student(a);s.setEmail(email);s.setPhone(phone);if(profileImage!=null&&!profileImage.isEmpty()){String type=profileImage.getContentType();if(type==null||!type.startsWith("image/")||profileImage.getSize()>2_000_000)return "redirect:/student/profile?imageError";try{StudentProfileImage image=profileImages.findByStudent(s).orElse(new StudentProfileImage(s,profileImage.getBytes(),type));image.replace(profileImage.getBytes(),type);profileImages.save(image);}catch(Exception e){return "redirect:/student/profile?imageError";}}students.save(s);return "redirect:/student/profile?updated";}
+ @GetMapping("/profile-picture") public ResponseEntity<byte[]> profilePicture(Authentication a){StudentProfileImage image=profileImages.findByStudent(student(a)).orElse(null);if(image==null)return ResponseEntity.notFound().build();MediaType type=image.getContentType()==null?MediaType.IMAGE_JPEG:MediaType.parseMediaType(image.getContentType());return ResponseEntity.ok().contentType(type).cacheControl(CacheControl.noCache()).body(image.getData());}
+ @GetMapping("/courses") @Transactional public String courses(Model m,Authentication a){semester(); m.addAttribute("units",units.findAll());return page(m,a,"courses");}
+ @PostMapping("/courses/{id}") @Transactional public String register(@PathVariable Long id,Authentication a){Student s=student(a); Unit u=units.findById(id).orElseThrow();if(!enrollments.existsByStudentAndUnit(s,u))enrollments.save(new Enrollment(s,u,semester()));return "redirect:/student/courses?registered";}
+ @GetMapping("/timetable") public String timetable(Model m,Authentication a){return page(m,a,"timetable");}
+ @GetMapping("/results") public String results(Model m,Authentication a){m.addAttribute("results",List.of(new Result("CSC 210","Object-Oriented Programming","A","78"),new Result("CSC 214","Database Systems","A-","74"),new Result("MAT 201","Discrete Mathematics","B+","69")));return page(m,a,"results");}
+ @GetMapping("/fees") public String fees(Model m,Authentication a){return page(m,a,"fees");}
+ @GetMapping("/notifications") public String notifications(Model m,Authentication a){return page(m,a,"notifications");}
+ public record Result(String code,String unit,String grade,String mark){}
+}
