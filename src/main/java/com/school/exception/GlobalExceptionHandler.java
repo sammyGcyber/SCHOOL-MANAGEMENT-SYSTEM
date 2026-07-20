@@ -1,0 +1,3 @@
+package com.school.exception;
+import org.springframework.http.HttpStatus; import org.springframework.stereotype.Controller; import org.springframework.ui.Model; import org.springframework.web.bind.annotation.*;
+@ControllerAdvice public class GlobalExceptionHandler { @ExceptionHandler(ResourceNotFoundException.class) @ResponseStatus(HttpStatus.NOT_FOUND) String notFound(ResourceNotFoundException e,Model m){m.addAttribute("message",e.getMessage());return "error/404";} @ExceptionHandler(Exception.class) @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) String error(Exception e,Model m){m.addAttribute("message","Something went wrong. Please try again or contact support.");return "error/500";} }

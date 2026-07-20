@@ -1,0 +1,4 @@
+package com.school.dto;
+import jakarta.validation.constraints.*;
+public class StudentForm { @NotBlank @Pattern(regexp="[A-Za-z0-9/-]+",message="Use letters, numbers, slashes or hyphens") private String registrationNumber; @NotBlank private String firstName; @NotBlank private String lastName; @NotBlank @Email private String email; private String phone;
+ public String getRegistrationNumber(){return registrationNumber;} public void setRegistrationNumber(String v){registrationNumber=v;} public String getFirstName(){return firstName;} public void setFirstName(String v){firstName=v;} public String getLastName(){return lastName;} public void setLastName(String v){lastName=v;} public String getEmail(){return email;} public void setEmail(String v){email=v;} public String getPhone(){return phone;} public void setPhone(String v){phone=v;} }

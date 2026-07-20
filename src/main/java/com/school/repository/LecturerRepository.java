@@ -1,0 +1,1 @@
+package com.school.repository; import com.school.entity.Lecturer; import org.springframework.data.jpa.repository.JpaRepository; public interface LecturerRepository extends JpaRepository<Lecturer,Long>{}

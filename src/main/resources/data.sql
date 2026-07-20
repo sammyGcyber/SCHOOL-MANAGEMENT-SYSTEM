@@ -1,0 +1,2 @@
+-- Demo users and initial announcement are created in DataInitializer so passwords
+-- are always BCrypt hashes and never stored as clear text in SQL.
