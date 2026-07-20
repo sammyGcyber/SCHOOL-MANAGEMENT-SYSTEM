@@ -1,40 +1,87 @@
 # Campus Portal — School Management System
 
-A Spring Boot 3.5 university portal demonstrating clean layered architecture, object-oriented design, Spring Security RBAC, JPA relationships, server-side validation, and a responsive Thymeleaf interface.
+Campus Portal is a Spring Boot university management application with separate, role-based workspaces for administrators, lecturers, and students. It combines a responsive Thymeleaf interface with Spring Security, JPA persistence, and MySQL.
+
+## Highlights
+
+- Secure login and role-based access for administrators, lecturers, and students
+- Student dashboard, profile, course registration, timetable, results, fees, and notifications
+- Lecturer dashboard, profile, assigned units, timetable, student lists, attendance, and notifications
+- Administrator student registration, search, and removal
+- First-time student account creation
+- MySQL-backed profiles, enrolments, payments, attendance, and profile-photo storage
+- Responsive blue-accent interface for desktop and mobile
+
+## Technology
+
+| Area | Technology |
+| --- | --- |
+| Backend | Java 21, Spring Boot 3.5 |
+| Web | Spring MVC, Thymeleaf, HTML, CSS, JavaScript |
+| Security | Spring Security with role-based access control |
+| Data | Spring Data JPA, Hibernate, MySQL 8 |
+| Build | Maven 3.9+ |
 
 ## Requirements
 
 - JDK 21
-- MySQL 8 running locally
-- Maven 3.9+
+- Apache Maven 3.9 or later
+- MySQL Server 8 running locally
 
 ## Run locally
 
-1. Create a MySQL user with permission to create databases, or create `school_management` yourself.
-2. Set the password for the configured MySQL user: PowerShell: `$env:MYSQL_PASSWORD='your-password'`.
-3. Run `mvn spring-boot:run`.
-4. Open `http://localhost:8080`.
+1. Start MySQL Server.
+2. Open PowerShell in the project folder.
+3. Set the MySQL root password for the current terminal session:
 
-The schema is generated from the JPA entity model on startup. For a production deployment, replace `ddl-auto=update` with versioned Flyway migrations.
+   ```powershell
+   $env:MYSQL_PASSWORD='your-mysql-password'
+   ```
 
-## Demo access
+4. Start the application:
+
+   ```powershell
+   mvn spring-boot:run
+   ```
+
+5. Open [http://localhost:8080](http://localhost:8080).
+
+The database is created automatically as `school_management`. The schema is managed in development through Hibernate’s `ddl-auto=update` configuration.
+
+## Demo accounts
 
 | Role | Username | Password |
-|---|---|---|
+| --- | --- | --- |
 | Administrator | `admin` | `Admin@123` |
 | Lecturer | `lecturer` | `Lecturer@123` |
 | Student | `student` | `Student@123` |
 
-Change all seed passwords before a real deployment.
+Change these accounts before deploying the system outside a local development environment.
 
-## Structure
+## Project structure
 
-`controller` contains web endpoints; `service` contains use cases; `repository` owns persistence queries; `entity` maps the normalized relational model; `dto` carries validated form data; and `config` / `security` centralize application and access rules.
+```text
+src/main/java/com/school
+├── config        Application security and seed configuration
+├── controller    Web endpoints and role-specific portals
+├── entity        JPA domain models
+├── repository    Persistence interfaces
+├── security      Database-backed authentication
+└── service       Student business operations
 
-## Current functional scope
+src/main/resources
+├── templates     Thymeleaf pages
+├── static        CSS and JavaScript assets
+└── application.properties
+```
 
-Authentication and role-based redirect, dashboard statistics, announcements, and administrator student registration/search/removal are implemented end-to-end. The entity base provides the academic, programme, semester, enrolment, teaching, and payments foundation for subsequent modules.
+## Notes for production
 
-## Design diagrams
+- Use environment variables or a secrets manager for database credentials.
+- Replace `ddl-auto=update` with Flyway or Liquibase migrations.
+- Change all seeded passwords and enforce a password-reset process.
+- Add authorization checks around unit membership before exposing student records in production.
 
-See [docs/architecture.md](docs/architecture.md) for ER, use-case, class, and login sequence diagrams.
+## Architecture diagrams
+
+See [docs/architecture.md](docs/architecture.md) for the ER, use-case, class, and login-sequence diagrams.

@@ -1,0 +1,3 @@
+package com.school.entity;
+import jakarta.persistence.*;
+@Entity @Table(name="lecturer_profile_images") public class LecturerProfileImage extends BaseEntity { @OneToOne(optional=false) @JoinColumn(name="lecturer_id",unique=true) private Lecturer lecturer; @Lob @Column(nullable=false,columnDefinition="LONGBLOB") private byte[] data; @Column(nullable=false) private String contentType; protected LecturerProfileImage(){} public LecturerProfileImage(Lecturer lecturer,byte[] data,String contentType){this.lecturer=lecturer;this.data=data;this.contentType=contentType;} public byte[] getData(){return data;} public String getContentType(){return contentType;} public void replace(byte[] data,String contentType){this.data=data;this.contentType=contentType;} }

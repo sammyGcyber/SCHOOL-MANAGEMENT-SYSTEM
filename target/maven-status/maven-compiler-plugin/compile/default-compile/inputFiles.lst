@@ -3,10 +3,12 @@ C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\config\
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminStudentController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AuthController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\DashboardController.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\LecturerPortalController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\StudentPortalController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\dto\StudentForm.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\AcademicYear.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Announcement.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Attendance.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\BaseEntity.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Department.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Enrollment.java
@@ -24,6 +26,7 @@ C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\excepti
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\exception\ResourceNotFoundException.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\AcademicYearRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\AnnouncementRepository.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\AttendanceRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\EnrollmentRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\FacultyRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\LecturerRepository.java

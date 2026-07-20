@@ -1,1 +1,1 @@
-package com.school.repository; import com.school.entity.Lecturer; import org.springframework.data.jpa.repository.JpaRepository; public interface LecturerRepository extends JpaRepository<Lecturer,Long>{}
+package com.school.repository; import com.school.entity.Lecturer; import java.util.*; import org.springframework.data.jpa.repository.JpaRepository; public interface LecturerRepository extends JpaRepository<Lecturer,Long>{ Optional<Lecturer> findByUserUsername(String username); }

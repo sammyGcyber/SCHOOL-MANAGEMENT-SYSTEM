@@ -1,0 +1,3 @@
+package com.school.entity;
+import jakarta.persistence.*; import java.time.LocalDate;
+@Entity public class Attendance extends BaseEntity { @ManyToOne(optional=false) private Student student; @ManyToOne(optional=false) private Unit unit; private LocalDate attendanceDate; private boolean present; protected Attendance(){} public Attendance(Student student,Unit unit,LocalDate date,boolean present){this.student=student;this.unit=unit;attendanceDate=date;this.present=present;} public Student getStudent(){return student;} public Unit getUnit(){return unit;} public LocalDate getAttendanceDate(){return attendanceDate;} public boolean isPresent(){return present;} }

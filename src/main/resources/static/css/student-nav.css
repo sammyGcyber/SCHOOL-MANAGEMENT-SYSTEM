@@ -85,6 +85,8 @@
 .photo-cropper input[type="range"] { width:100%; margin:0 0 18px; accent-color:#246bfd; }
 .crop-actions { display:flex; justify-content:flex-end; gap:10px; }.crop-cancel { border:0; background:#eef3fb; color:#526278; border-radius:8px; padding:10px 14px; font:600 13px 'DM Sans'; cursor:pointer; }
 
+.lecturer-avatar{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,#0e5ecf,#5c94ff);border:3px solid #fff;color:#fff;font-weight:700;box-shadow:0 8px 20px #246bfd25}.lecturer-avatar img{width:100%;height:100%;object-fit:cover}.lecturer-body .profile-big{display:grid;place-items:center}.lecturer-body .nav{display:flex;align-items:center;gap:11px}.lecturer-body .nav svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 17px}.lecturer-body .nav.active svg{stroke:#fff}.lecturer-body .quick-link{display:block;padding:13px 0;border-top:1px solid var(--line);color:#175fd0;text-decoration:none;font-weight:600;font-size:13px}.lecturer-body select{border:1px solid #d8e3f4;border-radius:8px;padding:9px 28px 9px 10px;background:#fff;color:#33415a;font:600 12px 'DM Sans'}.lecturer-body .profile-form{min-height:410px}
+
 @media (max-width: 560px) {
   .upload-row { align-items:flex-start; flex-wrap:wrap; }
   .upload-button { margin-left:49px; }
