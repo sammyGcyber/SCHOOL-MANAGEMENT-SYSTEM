@@ -17,4 +17,5 @@ public class User extends BaseEntity {
  public User(String username,String email,String password,String fullName,RoleName role){this.username=username;this.email=email;this.password=password;this.fullName=fullName;this.roles.add(role);}
  public String getUsername(){return username;} public String getEmail(){return email;} public String getPassword(){return password;} public String getFullName(){return fullName;} public boolean isActive(){return active;} public Set<RoleName> getRoles(){return roles;}
  public void setPassword(String password){this.password=password;} public void setActive(boolean active){this.active=active;}
+ public void setEmail(String email){this.email=email;} public void setFullName(String fullName){this.fullName=fullName;}
 }

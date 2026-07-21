@@ -1,1 +1,78 @@
-<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Students | Campus Portal</title><link rel="stylesheet" th:href="@{/css/app.css}"></head><body><div class="shell"><aside><a class="logo" th:href="@{/admin/dashboard}"><span>C</span> Campus</a><p class="side-label">ADMINISTRATION</p><a class="nav" th:href="@{/admin/dashboard}">◈ Dashboard</a><a class="nav active" href="#">◎ Students</a><a class="nav" href="#">♙ Lecturers</a><a class="nav" href="#">▤ Academic setup</a><form th:action="@{/logout}" method="post"><button class="nav logout">↪ Sign out</button></form></aside><main class="content"><header><div><p class="eyebrow">STUDENT DIRECTORY</p><h1>Students</h1><p class="muted">Register, find, and manage student records.</p></div><a class="primary inline" th:href="@{/admin/students/new}">+ Register student</a></header><div class="alert success" th:if="${success}" th:text="${success}"></div><section class="panel full"><form class="search" method="get"><input name="q" th:value="${q}" placeholder="Search by name or registration number"><button type="submit">Search</button></form><div class="table-wrap"><table><thead><tr><th>REGISTRATION NO.</th><th>STUDENT</th><th>EMAIL</th><th>PHONE</th><th></th></tr></thead><tbody><tr th:each="s : ${students}"><td><b th:text="${s.registrationNumber}">REG</b></td><td th:text="${s.firstName + ' ' + s.lastName}">Name</td><td th:text="${s.email}">email</td><td th:text="${s.phone ?: '—'}">—</td><td><form th:action="@{/admin/students/{id}/delete(id=${s.id})}" method="post"><button class="text-danger" onclick="return confirm('Remove this student?')">Remove</button></form></td></tr><tr th:if="${#lists.isEmpty(students)}"><td colspan="5"><div class="empty">No students found. Register your first student to get started.</div></td></tr></tbody></table></div></section></main></div></body></html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Students | Campus Admin</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}"><link rel="stylesheet" th:href="@{/css/student-nav.css}"><script defer th:src="@{/js/app.js}"></script>
+</head>
+<body class="student-body">
+<div class="shell">
+  <button class="sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="true">☰</button>
+  <aside class="student-side admin-side">
+    <a class="logo" th:href="@{/admin/dashboard}"><span>C</span> Campus</a>
+    <p class="side-label">ADMINISTRATION</p>
+    <nav>
+      <a class="nav" th:classappend="${active == 'dashboard'} ? ' active'" th:href="@{/admin/dashboard}"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Dashboard</a>
+      <a class="nav" th:classappend="${active == 'profile'} ? ' active'" th:href="@{/admin/profile}"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.7-4 3.4-6 8-6s7.3 2 8 6"/></svg>My profile</a>
+      <a class="nav" th:classappend="${active == 'students'} ? ' active'" th:href="@{/admin/students}"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Students</a>
+      <a class="nav" th:classappend="${active == 'lecturers'} ? ' active'" th:href="@{/admin/lecturers}"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.7-4 3.4-6 8-6s7.3 2 8 6"/></svg>Lecturers</a>
+      <a class="nav" th:classappend="${active == 'academic'} ? ' active'" th:href="@{/admin/academic}"><svg viewBox="0 0 24 24"><path d="M4 5a3 3 0 0 1 3-3h13v17H7a3 3 0 0 0-3 3z"/><path d="M4 5v16a1 1 0 0 0 1 1h15"/><path d="M9 7h7M9 11h7"/></svg>Academic setup</a>
+      <a class="nav" th:classappend="${active == 'finance'} ? ' active'" th:href="@{/admin/finance}"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/></svg>Fee management</a>
+      <a class="nav" th:classappend="${active == 'announcements'} ? ' active'" th:href="@{/admin/announcements}"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 22h4"/></svg>Announcements</a>
+    </nav>
+    <div class="side-footer"><form th:action="@{/logout}" method="post"><button class="nav logout"><svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5M15 12H3M13 4h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/></svg>Sign out</button></form></div>
+  </aside>
+  <main class="content student-content">
+    <header>
+      <div>
+        <p class="eyebrow">STUDENT DIRECTORY</p>
+        <h1>Students</h1>
+        <p class="muted">Register, find, and manage student records.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a class="primary inline" th:href="@{/admin/students/new}">+ Register student</a>
+        <a class="student-avatar" th:href="@{/admin/profile}"><span>AD</span></a>
+      </div>
+    </header>
+
+    <div class="alert success" th:if="${success}" th:text="${success}"></div>
+
+    <section class="panel full">
+      <form class="search" method="get">
+        <input name="q" th:value="${q}" placeholder="Search by name or registration number">
+        <button type="submit">Search</button>
+      </form>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>REGISTRATION NO.</th>
+              <th>STUDENT</th>
+              <th>EMAIL</th>
+              <th>PHONE</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="s : ${students}">
+              <td><b th:text="${s.registrationNumber}">REG</b></td>
+              <td th:text="${s.firstName + ' ' + s.lastName}">Name</td>
+              <td th:text="${s.email}">email</td>
+              <td th:text="${s.phone ?: '—'}">—</td>
+              <td>
+                <form th:action="@{/admin/students/{id}/delete(id=${s.id})}" method="post">
+                  <button class="text-danger" onclick="return confirm('Remove this student?')">Remove</button>
+                </form>
+              </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(students)}">
+              <td colspan="5"><div class="empty">No students found. Register your first student to get started.</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

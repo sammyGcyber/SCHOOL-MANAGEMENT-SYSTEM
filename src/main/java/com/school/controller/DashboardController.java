@@ -1,4 +1,17 @@
 package com.school.controller;
-import com.school.repository.*; import org.springframework.stereotype.Controller; import org.springframework.ui.Model; import org.springframework.web.bind.annotation.GetMapping;
-@Controller public class DashboardController { private final StudentRepository students; private final LecturerRepository lecturers; private final UnitRepository units; private final AnnouncementRepository announcements; public DashboardController(StudentRepository s,LecturerRepository l,UnitRepository u,AnnouncementRepository a){students=s;lecturers=l;units=u;announcements=a;}
- private String dashboard(Model m,String role){m.addAttribute("role",role);m.addAttribute("studentCount",students.count());m.addAttribute("lecturerCount",lecturers.count());m.addAttribute("unitCount",units.count());m.addAttribute("announcements",announcements.findAll());return "dashboard";} @GetMapping("/") String root(){return "redirect:/login";} @GetMapping("/admin/dashboard") String admin(Model m){return dashboard(m,"Administrator");} }
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class DashboardController {
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/login";
+    }
+
+    @GetMapping("/admin")
+    public String adminRoot() {
+        return "redirect:/admin/dashboard";
+    }
+}

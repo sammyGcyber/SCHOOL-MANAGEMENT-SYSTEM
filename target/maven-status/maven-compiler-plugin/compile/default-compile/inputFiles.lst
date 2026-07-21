@@ -1,5 +1,11 @@
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\config\DataInitializer.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\config\SecurityConfig.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminAcademicController.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminAnnouncementController.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminDashboardController.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminFinanceController.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminLecturerController.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminProfileController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AdminStudentController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\AuthController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\DashboardController.java
@@ -7,6 +13,7 @@ C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\control
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\controller\StudentPortalController.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\dto\StudentForm.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\AcademicYear.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\AdminProfileImage.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Announcement.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Attendance.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\BaseEntity.java
@@ -14,6 +21,7 @@ C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Enrollment.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Faculty.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Lecturer.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\LecturerProfileImage.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Payment.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Programme.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\entity\Semester.java
@@ -25,12 +33,16 @@ C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\enums\R
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\exception\GlobalExceptionHandler.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\exception\ResourceNotFoundException.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\AcademicYearRepository.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\AdminProfileImageRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\AnnouncementRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\AttendanceRepository.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\DepartmentRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\EnrollmentRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\FacultyRepository.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\LecturerProfileImageRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\LecturerRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\PaymentRepository.java
+C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\ProgrammeRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\SemesterRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\StudentProfileImageRepository.java
 C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM\src\main\java\com\school\repository\StudentRepository.java
