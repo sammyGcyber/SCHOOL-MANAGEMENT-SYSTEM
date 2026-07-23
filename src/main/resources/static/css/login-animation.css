@@ -1,0 +1,114 @@
+/* Decorative login-only scene. It does not affect authentication or portal pages. */
+.auth-welcome {
+    display: block;
+    min-height: 100dvh;
+    overflow: hidden;
+    background: #eef4ff;
+}
+
+.auth-layout {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: minmax(380px, 1fr) minmax(420px, 520px);
+    align-items: center;
+    gap: clamp(32px, 6vw, 110px);
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 32px clamp(26px, 6vw, 96px);
+}
+
+.auth-welcome .login-card {
+    width: min(440px, 100%);
+    margin: 0;
+    justify-self: center;
+}
+
+.login-scene {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #0a2a67 0%, #1056c8 56%, #3b8dff 100%);
+    box-shadow: 0 28px 70px rgba(16, 61, 133, .25);
+    isolation: isolate;
+}
+
+/* The supplied image is the complete left-side welcome panel. */
+.login-illustration-panel {
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: #ffffff;
+}
+
+.login-illustration {
+    display: block;
+    width: min(100%, 510px);
+    max-height: 520px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 18px rgba(24, 63, 119, .16));
+}
+
+.scene-glow {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    top: -135px;
+    right: -95px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    filter: blur(2px);
+}
+
+.illustration-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    padding-bottom: 110px;
+}
+
+.illustration-container img {
+    max-width: 82%;
+    max-height: 72%;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.22));
+    animation: float-illustration 5s infinite alternate ease-in-out;
+}
+
+.scene-copy {
+    position: absolute;
+    z-index: 3;
+    left: clamp(28px, 6vw, 64px);
+    bottom: 36px;
+    margin: 0;
+    color: #fff;
+    animation: scene-copy-in .6s .75s both ease-out;
+}
+.scene-copy strong, .scene-copy span { display: block; }
+.scene-copy strong { font-size: clamp(1.25rem, 2.2vw, 1.7rem); }
+.scene-copy span { margin-top: 5px; color: rgba(255,255,255,.78); }
+
+.login-reveal { opacity: 0; animation: login-reveal .62s .48s both cubic-bezier(.2,.8,.25,1); }
+
+@keyframes float-illustration {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-12px); }
+}
+
+@keyframes scene-copy-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes login-reveal { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@media (max-width: 900px) {
+    .auth-welcome { overflow: auto; }
+    .auth-layout { grid-template-columns: 1fr; min-height: 100dvh; padding: 30px 20px; }
+    .login-scene { display: none; }
+    .auth-welcome .login-card { width: min(440px, 100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .login-scene *, .login-reveal { animation: none !important; }
+    .login-reveal { opacity: 1; }
+}

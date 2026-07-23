@@ -29,7 +29,12 @@ public class AdminProfileController {
     }
 
     private User adminUser(Authentication auth) {
-        return users.findByUsername(auth.getName()).orElseThrow();
+        if (auth == null || auth.getName() == null) {
+            throw new org.springframework.security.authentication.InsufficientAuthenticationException("Not authenticated");
+        }
+        return users.findByUsername(auth.getName()).orElseThrow(() ->
+            new org.springframework.security.core.userdetails.UsernameNotFoundException("Admin user not found: " + auth.getName())
+        );
     }
 
     private boolean hasProfileImage(User user) {
@@ -57,6 +62,9 @@ public class AdminProfileController {
                               @RequestParam(required = false) String newPassword,
                               @RequestParam(required = false) MultipartFile profileImage) {
         User u = adminUser(auth);
+        if (!u.getEmail().equalsIgnoreCase(email) && users.existsByEmail(email)) {
+            return "redirect:/admin/profile?emailError";
+        }
         u.setEmail(email);
         u.setFullName(fullName);
         if (newPassword != null && !newPassword.trim().isEmpty()) {

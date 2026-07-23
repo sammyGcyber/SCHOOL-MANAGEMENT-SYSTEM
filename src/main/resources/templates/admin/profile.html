@@ -31,7 +31,7 @@
       </div>
       <a class="student-avatar" th:href="@{/admin/profile}">
         <img th:if="${hasAdminImage}" th:src="@{/admin/profile-picture}" alt="Profile photo">
-        <span th:unless="${hasAdminImage}" th:text="${#strings.substring(adminUser.fullName,0,1)}">A</span>
+        <span th:unless="${hasAdminImage}" th:text="${(adminUser != null && adminUser.fullName != null && !adminUser.fullName.isEmpty()) ? adminUser.fullName.substring(0,1).toUpperCase() : 'A'}">A</span>
       </a>
     </header>
 
@@ -39,7 +39,7 @@
       <article class="panel profile-card">
         <div class="profile-big">
           <img th:if="${hasAdminImage}" th:src="@{/admin/profile-picture}" alt="Profile photo">
-          <span th:unless="${hasAdminImage}" th:text="${#strings.substring(adminUser.fullName,0,1)}">A</span>
+          <span th:unless="${hasAdminImage}" th:text="${(adminUser != null && adminUser.fullName != null && !adminUser.fullName.isEmpty()) ? adminUser.fullName.substring(0,1).toUpperCase() : 'A'}">A</span>
         </div>
         <h2 th:text="${adminUser.fullName}">System Administrator</h2>
         <p th:text="${adminUser.username}">admin</p>
@@ -49,6 +49,7 @@
         <div class="panel-head"><div><h2>Administrator Settings</h2><p class="muted">Update your account details and password.</p></div></div>
         <div class="alert success" th:if="${param.updated}">Profile updated successfully.</div>
         <div class="alert error" th:if="${param.imageError}">Use a valid image smaller than 2 MB.</div>
+        <div class="alert error" th:if="${param.emailError}">Email address is already in use by another user.</div>
         <div class="upload-row">
           <div class="upload-icon">◉</div>
           <div><b>Profile picture</b><p>JPG, PNG or WEBP · Maximum 2 MB</p></div>

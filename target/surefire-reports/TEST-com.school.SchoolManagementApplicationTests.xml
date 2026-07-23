@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.school.controller.AdminProfileControllerTest" time="17.444" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.school.SchoolManagementApplicationTests" time="3.321" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -49,7 +49,7 @@
     <property name="localRepository" value="C:\Users\SAMMY\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
     <property name="java.io.tmpdir" value="C:\Users\SAMMY\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="com.zaxxer.hikari.pool_number" value="2"/>
     <property name="java.version" value="21.0.11"/>
     <property name="user.dir" value="C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM"/>
     <property name="os.arch" value="amd64"/>
@@ -66,9 +66,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="profilePageLoads" classname="com.school.controller.AdminProfileControllerTest" time="1.952">
-    <system-out><![CDATA[09:51:00.597 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.school.controller.AdminProfileControllerTest]: AdminProfileControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-09:51:00.951 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.school.SchoolManagementApplication for test class com.school.controller.AdminProfileControllerTest
+  <testcase name="contextLoads" classname="com.school.SchoolManagementApplicationTests" time="0.01">
+    <system-out><![CDATA[2026-07-23T09:51:17.744+03:00  INFO 6432 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.school.SchoolManagementApplicationTests]: SchoolManagementApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-23T09:51:17.837+03:00  INFO 6432 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.school.SchoolManagementApplication for test class com.school.SchoolManagementApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -79,42 +79,31 @@
 
  :: Spring Boot ::                (v3.5.0)
 
-2026-07-23T09:51:02.172+03:00  INFO 6432 --- [           main] c.s.c.AdminProfileControllerTest         : Starting AdminProfileControllerTest using Java 21.0.11 with PID 6432 (started by SAMMY in C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM)
-2026-07-23T09:51:02.175+03:00  INFO 6432 --- [           main] c.s.c.AdminProfileControllerTest         : No active profile set, falling back to 1 default profile: "default"
-2026-07-23T09:51:04.132+03:00  INFO 6432 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-23T09:51:04.369+03:00  INFO 6432 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 202 ms. Found 16 JPA repository interfaces.
-2026-07-23T09:51:05.717+03:00  INFO 6432 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-07-23T09:51:05.873+03:00  INFO 6432 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
-2026-07-23T09:51:05.995+03:00  INFO 6432 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-07-23T09:51:06.827+03:00  INFO 6432 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-23T09:51:06.910+03:00  INFO 6432 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-07-23T09:51:07.349+03:00  INFO 6432 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:school user=SA
-2026-07-23T09:51:07.352+03:00  INFO 6432 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-07-23T09:51:07.410+03:00  WARN 6432 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-07-23T09:51:07.469+03:00  INFO 6432 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+2026-07-23T09:51:17.937+03:00  INFO 6432 --- [           main] c.s.SchoolManagementApplicationTests     : Starting SchoolManagementApplicationTests using Java 21.0.11 with PID 6432 (started by SAMMY in C:\Users\SAMMY\Desktop\SCHOOL MANAGEMENT SYSTEM)
+2026-07-23T09:51:17.937+03:00  INFO 6432 --- [           main] c.s.SchoolManagementApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2026-07-23T09:51:19.369+03:00  INFO 6432 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-23T09:51:19.433+03:00  INFO 6432 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 16 JPA repository interfaces.
+2026-07-23T09:51:19.659+03:00  INFO 6432 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-23T09:51:19.668+03:00  INFO 6432 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-23T09:51:19.685+03:00  INFO 6432 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-23T09:51:19.685+03:00  INFO 6432 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-07-23T09:51:19.685+03:00  INFO 6432 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:school user=SA
+2026-07-23T09:51:19.685+03:00  INFO 6432 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-07-23T09:51:19.685+03:00  WARN 6432 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-23T09:51:19.685+03:00  INFO 6432 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
 	Autocommit mode: undefined/unknown
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-07-23T09:51:10.069+03:00  INFO 6432 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-07-23T09:51:10.309+03:00  INFO 6432 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-23T09:51:11.482+03:00  INFO 6432 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-07-23T09:51:12.726+03:00  WARN 6432 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-23T09:51:12.792+03:00  INFO 6432 --- [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
-2026-07-23T09:51:12.792+03:00  WARN 6432 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2026-07-23T09:51:14.659+03:00  INFO 6432 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-07-23T09:51:14.660+03:00  INFO 6432 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-07-23T09:51:14.661+03:00  INFO 6432 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-07-23T09:51:14.710+03:00  INFO 6432 --- [           main] c.s.c.AdminProfileControllerTest         : Started AdminProfileControllerTest in 13.381 seconds (process running for 15.804)
+2026-07-23T09:51:19.999+03:00  INFO 6432 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-23T09:51:20.091+03:00  INFO 6432 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-23T09:51:20.396+03:00  WARN 6432 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-23T09:51:20.409+03:00  INFO 6432 --- [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2026-07-23T09:51:20.409+03:00  WARN 6432 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-07-23T09:51:20.649+03:00  INFO 6432 --- [           main] c.s.SchoolManagementApplicationTests     : Started SchoolManagementApplicationTests in 2.803 seconds (process running for 21.743)
 ]]></system-out>
-    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
-WARNING: A Java agent has been loaded dynamically (C:\Users\SAMMY\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
   </testcase>
 </testsuite>
