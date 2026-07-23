@@ -2,6 +2,10 @@
 
 Campus Portal is a Spring Boot university management application with separate, role-based workspaces for administrators, lecturers, and students. It combines a responsive Thymeleaf interface with Spring Security, JPA persistence, and MySQL.
 
+## Collaboration
+
+This project was developed collaboratively by a team of two contributors.
+
 ## Highlights
 
 - Secure login and role-based access for administrators, lecturers, and students
@@ -46,7 +50,7 @@ Campus Portal is a Spring Boot university management application with separate, 
 
 5. Open [http://localhost:8080](http://localhost:8080).
 
-The database is created automatically as `school_management`. The schema is managed in development through Hibernate’s `ddl-auto=update` configuration.
+The database is created automatically as `school_management`. In development, Hibernate manages the schema through `ddl-auto=update`.
 
 ## Demo accounts
 
